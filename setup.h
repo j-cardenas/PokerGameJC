@@ -1,13 +1,15 @@
 #ifndef SETUP_H
 #define SETUP_H
 #include "formulas.h"
+#include "cardCheck.h"
+#include "aceCheck.h"
 using namespace std;
 
 
 
 void setup (){
 bool play = true;
-	while (play == true)
+	while (play == true) //Game starts in a loop, user may exit at the end.
 	{
 		string name[PLYR];
 		char suit[PLYR][NUM];
@@ -33,7 +35,10 @@ bool play = true;
 		
 		for (int i = 0; i < PLYR; i++)
 		{
-			cardCheck(rank[i], suit[i]);
+      //Displays name of player + asks player for hand.
+      cout <<name[i]<< " enter the 5 cards in your hand\n";
+			
+      cardCheck(rank[i], suit[i]); //cardCheck.h 
 			lowAce[i] = aceCheck(rank[i]);
 
 			for (int count = 0; count < NUM; count++)
@@ -68,9 +73,11 @@ bool play = true;
 		Winner(name, numRank, highcard, cardtype);
 
 		bool error = true;
+
+    //Checks to see if user wants to play again.
 		while (error == true)
 		{
-			cout << "Play Again? (Y/N)\n";
+			cout << "Play Again? (Y/N)  ";
 			cin >> answer;
 			if (answer == 'y' || answer == 'Y')
 			{
@@ -84,11 +91,11 @@ bool play = true;
 			}
 			else
 			{
-				cout << "ERROR: Please Type Again\n";
+				cout << "ERROR: Please Type Again  ";
 				error = true;
 			}
 		}
-		cin.ignore();
+		cin.ignore(); //clear input buffer
 	}
 
 }

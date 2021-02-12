@@ -5,9 +5,8 @@ using namespace std;
 const int NUM = 5; //Number of cards in hand
 const int PLYR = 2; //Number of players
 
-void cardCheck(char[], char[]);
 bool Input(char, char);
-bool aceCheck(char[]);
+
 void Sort(int[]);
 void swap(int&, int&);
 int numConvert(char, bool);
@@ -24,37 +23,7 @@ string convertSuit(char);
 string cardInfo(int, int, int[], char[]);
 void Winner(string[], int[][NUM], int[], int[]);
 
-void cardCheck(char rank[], char suit[])
-{
-	//grabs 5 cards from player
-	cout << "Enter the 5 cards in your hand\n";
-	for (int i = 0; i < NUM; i++)
-	{
-		bool badinput = true;
 
-		//checking for bad cards
-		while (badinput)
-		{
-			cin >> rank[i] >> suit[i];
-			bool goodinput = Input(rank[i], suit[i]);
-
-			//checks for repeat cards
-			bool doublecard = false;
-			for (int count = 0; count < i; count++)
-			{
-				if (rank[count] == rank[i] && suit[count] == suit[i])
-					doublecard = true;
-			}
-			if (goodinput == false)
-				cout << "Bad Card. Please Reenter Another Card:\n";
-			else if (doublecard == true)
-				cout << "Card Already Entered. Please Reenter Another Card: \n";
-			else
-				badinput = false;
-		}
-
-	}
-}
 //checks for unauthorized cards
 bool Input(char rank, char suit)
 {
@@ -113,17 +82,6 @@ bool Input(char rank, char suit)
 	return (rankgood && suitgood);
 }
 
-bool aceCheck(char rank[])
-{
-	for (int i = 0; i < NUM; i++)
-	{
-		if ((rank[i] - 48) > 5 && rank[i] != 'A')
-		{
-			return false;
-		}
-	}
-	return true;
-}
 
 int numConvert(char rank, bool lowAce)
 {
@@ -686,11 +644,11 @@ void Winner(string name[], int rank[][NUM], int highcard[], int cardtype[])
 
 	if (winner == 2)
 	{
-		cout << name[1] << " Wins! !" << endl;
+		cout << name[1] << " \nWins! !" << endl;
 	}
 	else if (winner == 1)
 	{
-		cout << name[0] << " Wins! !" << endl;
+		cout << name[0] << " \nWins! !" << endl;
 	}
 	else if (winner == 0)
 	{
