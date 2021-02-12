@@ -3,6 +3,7 @@
 #include "formulas.h"
 #include "cardCheck.h"
 #include "aceCheck.h"
+#include "sort.h"
 using namespace std;
 
 
@@ -65,17 +66,19 @@ bool play = true;
 			highcard[i] = highCard(numRank[i], cardtype[i]);
 		}
 
+    //Dos[;]
 		for (int i = 0; i < PLYR; i++)
 		{
 			Display(name[i], cardtype[i], highcard[i], numRank[i], rank[i], suit[i]);
 		}
 
+    //Displays winner
 		Winner(name, numRank, highcard, cardtype);
 
 		bool error = true;
 
     //Checks to see if user wants to play again.
-		while (error == true)
+		/*while (error == true)
 		{
 			cout << "Play Again? (Y/N)  ";
 			cin >> answer;
@@ -95,7 +98,7 @@ bool play = true;
 				error = true;
 			}
 		}
-		cin.ignore(); //clear input buffer
+		cin.ignore(); //clear input buffer*/
 	}
 
 }

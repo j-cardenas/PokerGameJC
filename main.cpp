@@ -8,8 +8,15 @@
 
 int main()
 {
+  char answer = '\0'; //To restart game
+  do{
 	//shows title screen
-	setup();
-	
+    setup();
+
+
+    cout << "\nPress E to end program." << endl; 
+    cout << "\nPress any other key to restart."<<endl;
+    cin >> answer;
+  } while (answer != 'E' && answer != 'e');
 }
 
